@@ -4,6 +4,10 @@
   "description": "A utility for managing Numbers with a variety of use cases.",
   "keywords": [
     "number",
+    "currency",
+    "decimals",
+    "random",
+    "phone",
     "sysvisionz",
     "utilities",
     "management"
