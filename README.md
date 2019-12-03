@@ -26,6 +26,7 @@ Manipulates a supplied <strong>Number</strong> or <strong>String</strong> of num
 * **countries**
 **READ-ONLY**
 This is a list of the styling defaults for each country in a format shown here for the United States.
+
 ``
 	US: {
 		currency: {
