@@ -25,8 +25,8 @@ Manipulates a supplied <strong>Number</strong> or <strong>String</strong> of num
 <details><summary><strong>NumberManager</strong> possesses the class variables <strong>countries</strong>, <strong>country</strong>, <strong>currencyStyle</strong>, <strong>max</strong>, <strong>min</strong>, <strong>num</strong>, <strong>phoneStyle</strong> and <strong>size</strong>. The <strong>country</strong> variable is scheduled for use in later releases, but not usable for anything but <strong>US</strong> at this juncture. Note: all of these are optional variables.</summary>
 <p>
 
-* **countries**
-**READ-ONLY**
+* **countries**  
+**READ-ONLY**  
 This is a list of the styling defaults for each country in a format shown here for the United States.
 
 ``
@@ -89,13 +89,13 @@ The number of decimal spaces or length of the number (depending on whether **Str
 The target of the function.  
 
 * **direction**  
-**Type: String**
-**Valid Values:** floor || ceil
-**Default:** ceil
+**Type: String**  
+**Valid Values:** floor || ceil  
+**Default:** ceil  
 If **floor** is used, it rounds towards 0. If **ceil** is used, it rounds away from 0.
 
 * **absolute**  
-**Type: Boolean**
+**Type: Boolean**  
 If **absolute** is set to true, the value is returned as always positive.
 
 
@@ -138,13 +138,13 @@ The target of the function.
 
 * **max**  
 **Type: Number**  
-**Default: this.max**
+**Default: this.max**  
 The maximum limit.
 
 
 * **min**  
 **Type: Number**  
-**Default: this.min**
+**Default: this.min**  
 The minimum limit.
 
 </p>
@@ -213,7 +213,7 @@ If **num** is a **String**, this adds prefix zeroes until it is **size** length.
 </details>
 
 ### toCurrency(num, style)
-<details><summary>A function to determine </summary>
+<details><summary>Converts <strong>num</strong> to a currency format dictated by <strong>style.</strong></summary>
 <p>
 
 * **num**  
@@ -223,7 +223,7 @@ The target of the function.
 
 * **style**  
 **Type: String**  
-**Default: this.currencyStyle**
+**Default: this.currencyStyle**  
 This dictates the formatting of the number, using **\*** to mean either all digits before the decimal or all digits following the decimal, and **#** to signify individual numbers.
 
 </p>
@@ -233,14 +233,14 @@ This dictates the formatting of the number, using **\*** to mean either all digi
 <details><summary>Converts <strong>num</strong> to a phone number in a format dictated by <strong>style</strong></summary>
 <p>
 
-* **num**
-**Type: Number**
-**Default: this.num**
+* **num**  
+**Type: Number**  
+**Default: this.num**  
 The number being used as the target of the function
 
-* **style**
-**Type: String**
-**Default:** **this.phoneStyle**
+* **style**  
+**Type: String**  
+**Default:** **this.phoneStyle**  
 This dictates the formatting of the number, using **#** where the digits should be inserted.
 
 </details>
