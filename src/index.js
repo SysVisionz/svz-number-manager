@@ -11,12 +11,13 @@ numType = num => {
 charMap = (string, callback) => string.split('').map(callback);
 
 export default class NumberManager {
-	constructor(vals){
+	constructor(num, vals){
 		for (const i in vals){
-			if (['phoneStyle', 'size', 'max', 'min', 'country', 'num'].includes(i)) {
+			if (['phoneStyle', 'size', 'max', 'min', 'country'].includes(i)) {
 				this[i] = vals[i]
 			}
 		}
+		this.num = num;
 		this.countriesVal = {
 			US: {
 				currency: {
@@ -83,30 +84,19 @@ export default class NumberManager {
 
 	absRound = (num = this.num, direction = 'ceil', places = 0, absolute) => {
 		num = num*Math.pow(10, places);
-		if (absolute || this.positive(num)){
-			return absolute ? Math.abs(Math[direction](num))/Math.pow(10, places) : Math[direction](num)/Math.pow(10, places)
+		if (!['ceil', 'floor'].includes(direction)){
+			throw `Exception: ${direction} is not valid for absRound. Use ceil or floor.`
 		}
-		else {
-			switch (direction){
-				case 'ceil':
-					return Math.floor(num)/Math.pow(10, places);
-				case 'round':
-					return Math.round(num)/Math.pow(10, places);
-				case 'floor':
-					return Math.ceil(num)/Math.pow(10, places);
-				default:
-					throw `Exception: ${direction} is not valid for absRound. Use ceil, floor, or round.`
-			}
-		}
+		neg = direction === 'ceil' ? 'floor' : 'ceil';
+		return Math[absolute || this.positive(num) ? direction : neg](num)/Math.pow(10, places)
 	}
 
-	calcAdditive = (num = this.num, maxVal = this.max) => {
-		let i = 0;
-		let calcTotal = 0;
-		while (Math.abs(calcTotal) < Math.abs(num)) {
+	calcAdditive = (num = this.num, increment = 1, max, init = 0) => {
+		let i = init ? -1 : 0;
+		num = Math.abs(num)
+		while (num > 0) {
 			i++;
-			const addTo = maxVal && i > maxVal ? maxVal*Number.positive(num) : Number.positive(num)*i;
-			calcTotal += addTo;
+			num -= max && i*increment+init > max ? max : i*increment+init;
 		}
 		return i;
 	}
@@ -126,14 +116,9 @@ export default class NumberManager {
 
 	rand = (max = this.max || 99, min = this.min || 0) => Math.floor(min+Math.random()*(max - min + 1))
 
-	setSize = (num = this.num, length = this.size) => {
-		testInvalid(num);
-		if (!length){
-			return this.sizeOf(num);
-		}
-		length = this.size(length)
+	setSize = (num = this.num, size = this.size) => {
 		if (typeof num === 'string'){
-			return num.length < length ? Array(length - num.length).fill(0).join('') + num: num
+			return num.length < size ? Array(size - num.length).fill(0).join('') + num : num
 		}
 		else {
 			return Number(num).toFixed(length);
@@ -142,17 +127,17 @@ export default class NumberManager {
 
 	sizeOf = (num = this.num) => {
 		if ( typeof num === 'string'){
-			if (numVal.includes('.')){
-				return numVal.split('.')[1].length;
+			if (num.includes('.')){
+				return this.decimalPlaces(num);
 			}
-			return numVal.length;
+			return num.length;
 		}
 		else if (typeof num === 'number') {
-			return number
+			return num
 		}
 	}
 
-	toCurrency = (num, style = this.currencyStyle) => {
+	toCurrency = (num = this.num, style = this.currencyStyle) => {
 		if (numType(num) === 'string'){
 			num = num.match( /[0-9]|\./g ).join('')
 		}
