@@ -21,7 +21,7 @@ import NumberManager from svz-number-manager;
 **Format:** numMan = new NumberManager(num, {country, currencyStyle, max, min, phoneStyle, size})
 Manipulates a supplied <strong>Number</strong> or <strong>String</strong> of numeric characters which may include one . character as needed for a variety of use cases. Using a <strong>Number</strong> variable produces a different set of behaviors from using a <strong>String</strong>, so making sure you're using the right type is important, here.</summary>
 
-##Class Variables
+## Class Variables
 <details><summary><strong>NumberManager</strong> possesses the class variables <strong>countries</strong>, <strong>country</strong>, <strong>currencyStyle</strong>, <strong>max</strong>, <strong>min</strong>, <strong>num</strong>, <strong>phoneStyle</strong> and <strong>size</strong>. The <strong>country</strong> variable is scheduled for use in later releases, but not usable for anything but <strong>US</strong> at this juncture. Note: all of these are optional variables.</summary>
 <p>
 
