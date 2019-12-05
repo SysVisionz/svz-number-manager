@@ -246,3 +246,13 @@ This dictates the formatting of the number, using **#** where the digits should 
 </details>
 
 </details>
+
+## Author
+
+* **Colin Brennan** - *full project* - [SysVisionz Github](https://github.com/SysVisionz), [SysVisionz NPM Modules](https://www.npmjs.com/~sysvisionz)
+
+## Version History
+<details><summary>1</summary>
+
+1.0.0 -  Initial Release.
+</details>
